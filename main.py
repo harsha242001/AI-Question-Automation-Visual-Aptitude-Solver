@@ -43,7 +43,7 @@ def main():
             print("Unsupported question type")
             continue
 
-        answer, steps = result
+        answer, tpl = result
 
         is_invalid = False
         if isinstance(answer, (int, float)) and answer < 0:
@@ -54,7 +54,7 @@ def main():
         results.append({
             "idx": i + 1,
             "question": question_str,
-            "steps": steps,
+            "tpl": tpl,
             "answer": answer,
             "is_invalid": is_invalid
         })
@@ -64,7 +64,7 @@ def main():
             "templates/visual_template.html",
             {
                 "question": question_str,
-                "steps": steps,
+                "tpl": tpl,
                 "answer": answer,
                 "is_invalid": is_invalid,
                 "image_b64": b64_img
